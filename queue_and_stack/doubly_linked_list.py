@@ -1,6 +1,5 @@
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
-import math
 
 
 class ListNode:
@@ -119,7 +118,6 @@ class DoublyLinkedList:
         Angry linter
         """
         result = self.tail.value
-        print('from dll', result)
         self.delete(self.tail)
         return result
 
@@ -166,13 +164,4 @@ class DoublyLinkedList:
         # """Returns the highest value currently in the list"""
 
     def get_max(self):
-        """
-        Angry linter
-        """
-        maximum = -math.inf
-        current = self.head
-        while current is not None:
-            if current.value > maximum:
-                maximum = current.value
-            current = current.next
-        return maximum
+        pass
