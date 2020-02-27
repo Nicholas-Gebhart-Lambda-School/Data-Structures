@@ -1,6 +1,6 @@
 import sys
-# from dll_stack import Stack
-# from dll_queue import Queue
+from dll_stack import Stack
+from dll_queue import Queue
 sys.path.append('../queue_and_stack')
 
 
@@ -62,37 +62,60 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node.left:
+            self.in_order_print(node.left)
+
+        print(node.value)
+
+        if node.right:
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
 
     def bft_print(self, node):
-        pass
+        if node:
+            queue = Queue()
+            queue.enqueue(node)
+        while queue.len():
+            temp = queue.dequeue()
+            print(temp.value)
+            if temp.right:
+                queue.enqueue(temp.right)
+            if temp.left:
+                queue.enqueue(temp.left)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self, node):
-        pass
+        if node:
+            stack = Stack()
+            stack.push(node)
+        while stack.len():
+            temp = stack.pop()
+            print(temp.value)
+            if temp.right:
+                stack.push(temp.right)
+            if temp.left:
+                stack.push(temp.left)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+
     def pre_order_dft(self, node):
-        pass
+        if node:
+            print(node.value)
+            self.pre_order_dft(node.left)
+            self.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
+
     def post_order_dft(self, node):
-        pass
+        if node:
+            self.post_order_dft(node.left)
+            self.post_order_dft(node.right)
+            print(node.value)
 
-
-D = BinarySearchTree(5)
-D.insert(6)
-D.insert(6)
-D.insert(6)
-D.insert(2)
-D.insert(2)
-D.insert(2)
-D.insert(7)
-print(D.get_max())
